@@ -1,7 +1,7 @@
 <?php
 define("hostname","localhost"); // ou serveurmysql
 
-define("database","S3projet2");
+define("database","s3bis");
 define("username","root");
 define("password","");
 
