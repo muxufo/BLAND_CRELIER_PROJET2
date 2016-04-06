@@ -29,7 +29,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
-// utilisation des sessoins
+// utilisation des sessions
 $app->register(new Silex\Provider\SessionServiceProvider());
 
 //en dev, nous voulons voir les erreurs
@@ -54,6 +54,7 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 //***************************************
 // Montage des controleurs sur le routeur
 $app->mount("/", new App\Controller\IndexController());
+$app->mount("/panier", new App\Controller\ProduitController($app));
 $app->mount("/produit", new App\Controller\ProduitController($app));
 $app->mount("/connexion", new App\Controller\UserController($app));
 

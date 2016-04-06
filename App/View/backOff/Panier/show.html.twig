@@ -12,12 +12,12 @@
             </tr>
             </thead>
             <tbody>
-            {% for Panier in data if data is not empty %}
+            {% for panier in data if data is not empty %}
                 <tr>
-                    <td>{{Panier.id_produit}}</td>
-                    <td>{{Panier.quantite}}</td>
-                    <td>{{Panier.prix}}</td>
-                    <td>{{Panier.dateAjoutPanier}}</td>
+                    <td>{{panier.id_produit}}</td>
+                    <td>{{panier.quantite}}</td>
+                    <td>{{panier.prix}}</td>
+                    <td>{{panier.dateAjoutPanier}}</td>
                 </tr>
             {% endfor %}
             </tbody>
