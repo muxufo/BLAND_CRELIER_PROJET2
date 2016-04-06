@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS etats (
 ) DEFAULT CHARSET=utf8 ;
 -- Contenu de la table etats
 INSERT INTO etats (id, libelle) VALUES
-(1, 'A préparer'),
-(2, 'Expédié');
+(1, 'A prï¿½parer'),
+(2, 'Expï¿½diï¿½');
 
 -- --------------------------------------------------------
 -- Structure de la table produits
@@ -101,6 +101,7 @@ CREATE TABLE IF NOT EXISTS paniers (
   user_id int(11) NOT NULL,
   produit_id int(11) NOT NULL,
   commande_id int(11) DEFAULT NULL,
+
   PRIMARY KEY (id),
   CONSTRAINT fk_paniers_users FOREIGN KEY (user_id) REFERENCES users (id),
   CONSTRAINT fk_paniers_produits FOREIGN KEY (produit_id) REFERENCES produits (id),
@@ -108,3 +109,4 @@ CREATE TABLE IF NOT EXISTS paniers (
 ) DEFAULT CHARSET=utf8 ;
 
 
+INSERT INTO paniers values (null,2,137.52,2016-04-07);

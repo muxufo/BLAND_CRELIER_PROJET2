@@ -1,4 +1,4 @@
-{% extends "layout.twig" %}
+{% extends "layout.html.twig" %}
 {% block contenu %}
     <div class="row">
         <table>
@@ -14,7 +14,7 @@
             <tbody>
             {% for panier in data if data is not empty %}
                 <tr>
-                    <td>{{panier.id_produit}}</td>
+                    <td>{{panier.produit_id}}</td>
                     <td>{{panier.quantite}}</td>
                     <td>{{panier.prix}}</td>
                     <td>{{panier.dateAjoutPanier}}</td>

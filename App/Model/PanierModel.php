@@ -14,10 +14,10 @@ class PanierModel {
     public function getAllPanier() {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('*')
-            ->from('paniers', 'pan')
-            ->innerJoin('pan', 'produit', 'p', 'pan.id_produit = p.id_produit')
-            ->addOrderBy('pan.id_produit', 'ASC');
+            ->select('pa.produit_id,pa.id,pr.nom,pa.quantite,pa.prix,pa.dateAjoutPanier')
+            ->from('paniers pa', ',produits pr' )
+            ->where('pr.id=produit_id');
+            //->orderBy('pan.id_produit', 'ASC');
         return $queryBuilder->execute()->fetchAll();
     }
 }

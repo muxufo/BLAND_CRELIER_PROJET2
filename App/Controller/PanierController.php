@@ -6,7 +6,7 @@ use Silex\ControllerProviderInterface;
 
 use Symfony\Component\HttpFoundation\Request;   // pour utiliser request
 
-use App\Model\ProduitModel;
+use App\Model\PanierModel;
 use App\Model\TypeProduitModel;
 
 use Symfony\Component\Validator\Constraints as Assert;   // pour utiliser la validation
