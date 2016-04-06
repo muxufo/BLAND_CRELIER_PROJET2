@@ -1,0 +1,26 @@
+{% extends "layout.twig" %}
+{% block contenu %}
+    <div class="row">
+        <table>
+            <caption>Panier</caption>
+            <thead>
+            <tr>
+                <th>id_produit</th>
+                <th>quantite</th>
+                <th>prix</th>
+                <th>dateAjoutPanier</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for Produit in data if data is not empty %}
+                <tr>
+                    <td>{{Produit.id_produit}}</td>
+                    <td>{{Produit.quantite}}</td>
+                    <td>{{Produit.prix}}</td>
+                    <td>{{Produit.dateAjoutPanier}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

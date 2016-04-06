@@ -6,4 +6,4 @@ define("username","root");
 define("password","");
 
 define('BASE_URL', explode('app_dev.php', $_SERVER['SCRIPT_NAME'])[0]);
-//define("BASE_URL","http://votreURL/");
+//define("BASE_URL","http://votreURL/");ea
