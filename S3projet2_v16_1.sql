@@ -108,5 +108,4 @@ CREATE TABLE IF NOT EXISTS paniers (
   CONSTRAINT fk_paniers_commandes FOREIGN KEY (commande_id) REFERENCES commandes (id)
 ) DEFAULT CHARSET=utf8 ;
 
-
-INSERT INTO paniers values (null,2,137.52,2016-04-07);
+INSERT INTO `s3projet2`.`paniers` (`id`, `quantite`, `prix`, `dateAjoutPanier`, `user_id`, `produit_id`, `commande_id`) VALUES (NULL, '1', '147.20', CURRENT_TIMESTAMP, '1', '1', NULL);
