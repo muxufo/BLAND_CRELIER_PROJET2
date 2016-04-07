@@ -30,7 +30,7 @@ class PanierController implements ControllerProviderInterface
     public function show(Application $app) {
         $this->panierModel = new PanierModel($app);
         $panier = $this->panierModel->getAllPanier();
-        return $app["twig"]->render('backOff/Panier/show.html.twig',['data'=>$panier]);
+        return $app["twig"]->render('FrontOffice/Panier/show.html.twig',['data'=>$panier]);
     }
 
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
