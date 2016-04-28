@@ -22,7 +22,9 @@
             {% endfor %}
             {% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITadmin' %}
                 <td>
-                    <a href="{{path('panier.delete', {id: paniers.id})}}"><img src="BASE_URL/images/supprimer.jpg" />supprimer</a>
+                    <a href="{{path('panier.delete', {id: paniers.id})}}">
+                        <img src="BASE_URL/images/supprimer.jpg" />supprimer
+                    </a>
                 </td>
             {% endif %}
             </tbody>
