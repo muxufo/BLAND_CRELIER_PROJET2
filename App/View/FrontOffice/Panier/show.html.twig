@@ -5,7 +5,7 @@
             <caption>Panier</caption>
             <thead>
             <tr>
-                <th>id_produit</th>
+                <th>nom</th>
                 <th>quantite</th>
                 <th>prix</th>
                 <th>dateAjoutPanier</th>
@@ -14,7 +14,7 @@
             <tbody>
             {% for panier in data if data is not empty %}
                 <tr>
-                    <td>{{panier.produit_id}}</td>
+                    <td>{{panier.nom}}</td>
                     <td>{{panier.quantite}}</td>
                     <td>{{panier.prix}}</td>
                     <td>{{panier.dateAjoutPanier}}</td>
