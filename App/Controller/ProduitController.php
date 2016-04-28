@@ -187,6 +187,4 @@ class ProduitController implements ControllerProviderInterface
 
         return $controllers;
     }
-
-
 }
