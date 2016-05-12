@@ -49,7 +49,7 @@ class PanierModel {
 
     function deleteArticle($produit_id, $user_id) {
         $queryBuilder = new QueryBuilder($this->db);
-        $queryBuilder->delete('paniers')
+        $queryBuilder->delete('panierss')
                      ->where('id = :produit_id')
                      ->andWhere('user_id = :user_id')
                      ->setParameter('produit_id',$produit_id)

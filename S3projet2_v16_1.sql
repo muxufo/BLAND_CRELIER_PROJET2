@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS typeProduits (
 )  DEFAULT CHARSET=utf8;
 -- Contenu de la table typeproduits
 INSERT INTO typeProduits (id, libelle) VALUES
-(1, 'type 1'),
-(2, 'type 2'),
-(3, 'type 3');
+(1, 'Carte mère'),
+(2, 'Processeurs'),
+(3, 'Cartes graphiques');
 
 -- --------------------------------------------------------
 -- Structure de la table etats
@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS produits (
 ) DEFAULT CHARSET=utf8 ;
 
 INSERT INTO produits (id,typeProduit_id,nom,prix,photo,dispo,stock) VALUES
-(1,1, 'produit 1','100','imageProduit.jpeg',1,5),
-(2,1, 'produit 2','5.5','imageProduit.jpeg',1,4),
-(3,2, 'produit 3','8.5','imageProduit.jpeg',1,10);
+(1,1, 'Asus gaming','100.99','carte_mere02.jpg',1,5),
+(2,1, 'MSI gaming','50.5','carte_mere01.jpg',1,4),
+(3,2, 'GTX 970','83.5','carte_graphique01.png',1,10);
 
 
 -- --------------------------------------------------------
