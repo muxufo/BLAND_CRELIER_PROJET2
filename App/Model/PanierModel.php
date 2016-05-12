@@ -38,6 +38,14 @@ class PanierModel {
 
     }
 
+    function deleteArticle($produit_id, $user_id) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->delete('paniers')
+            ->where('produit_id= :idProduit')->andWhere('user_id = :id_User')
+            ->setParameter('idProduit',$produit_id)->setParameter('idUser',$user_id);
+        return $queryBuilder->execute()->fetchAll();
+    }
+
     function inserLigne($produit_id,$user_id){
 
     }
