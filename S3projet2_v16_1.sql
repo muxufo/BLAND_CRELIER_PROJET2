@@ -108,6 +108,9 @@ CREATE TABLE IF NOT EXISTS paniers (
   CONSTRAINT fk_paniers_commandes FOREIGN KEY (commande_id) REFERENCES commandes (id)
 ) DEFAULT CHARSET=utf8 ;
 
-INSERT INTO `s3bis`.`paniers` (`id`, `quantite`, `prix`, `dateAjoutPanier`, `user_id`, `produit_id`, `commande_id`) VALUES (NULL, '1', '147.20', CURRENT_TIMESTAMP, '1', '1', NULL);
+INSERT INTO `s3bis`.`paniers` (`id`, `quantite`, `prix`, `dateAjoutPanier`, `user_id`, `produit_id`, `commande_id`) VALUES (NULL, '1', '147.20', CURRENT_TIMESTAMP, '3', '1', NULL);
+
+
+INSERT INTO `s3bis`.`paniers` (`id`, `quantite`, `prix`, `dateAjoutPanier`, `user_id`, `produit_id`, `commande_id`) VALUES (NULL, '1', '137.20', CURRENT_TIMESTAMP, '3', '2', NULL);
 
 

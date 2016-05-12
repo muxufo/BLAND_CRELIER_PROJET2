@@ -23,14 +23,16 @@ class PanierModel {
 
 
 
-    function counNbProduitLigne($produit_id, $user_id){
+    function countNbProduitLigne($produit_id, $user_id){
         $queryBuilder = new QueryBuilder($this->db);
-
         $queryBuilder
-            ->select('count(produit_id')->from('paniers')
-            ->where('produit_id= :idProduit')->andWhere('user_id = :id_User')
+            ->select('count(id)')
+            ->from('paniers')
+            ->where('id = :produit_id')
+            ->andWhere('user_id = :user_id')
             ->andWhere('commande_id is Null')
-            ->setParameter('idProduit', $produit_id)->setParameter('user_id', $user_id);
+            ->setParameter('id', $produit_id)
+            ->setParameter('user_id', $user_id);
         return $queryBuilder ->execute()->fetchColumn(0);
     }
 
@@ -48,6 +50,8 @@ class PanierModel {
     function deleteArticle($produit_id, $user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->delete('paniers')
+                     ->where('id = :produit_id')
+                     ->andWhere('user_id = :user_id')
                      ->setParameter('produit_id',$produit_id)
                      ->setParameter('user_id',$user_id)
         ;
