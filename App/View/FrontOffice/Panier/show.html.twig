@@ -9,6 +9,7 @@
                 <th>quantite</th>
                 <th>prix</th>
                 <th>dateAjoutPanier</th>
+                <th>operation</th>
             </tr>
             </thead>
             <tbody>
@@ -18,15 +19,18 @@
                     <td>{{panier.quantite}}</td>
                     <td>{{panier.prix}}</td>
                     <td>{{panier.dateAjoutPanier}}</td>
+
+
+                {% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITclient' %}
+                    <td>
+                        <a href="{{path('panier.delete', {id: panier.id})}}">
+                            <img src="BASE_URL/images/supprimer.jpg" />supprimer
+                        </a>
+                    </td>
                 </tr>
+                {% endif %}
             {% endfor %}
-            {% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITadmin' %}
-                <td>
-                    <a href="{{path('panier.delete', {id: paniers.id})}}">
-                        <img src="BASE_URL/images/supprimer.jpg" />supprimer
-                    </a>
-                </td>
-            {% endif %}
+
             </tbody>
         </table>
     </div>
