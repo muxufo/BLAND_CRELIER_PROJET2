@@ -109,3 +109,5 @@ CREATE TABLE IF NOT EXISTS paniers (
 ) DEFAULT CHARSET=utf8 ;
 
 INSERT INTO `s3bis`.`paniers` (`id`, `quantite`, `prix`, `dateAjoutPanier`, `user_id`, `produit_id`, `commande_id`) VALUES (NULL, '1', '147.20', CURRENT_TIMESTAMP, '1', '1', NULL);
+
+

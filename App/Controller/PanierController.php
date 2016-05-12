@@ -50,10 +50,10 @@ class PanierController implements ControllerProviderInterface
     public function delete(Application $app, Request $req){
         $this->produitModel = new ProduitModel($app);
         $this->panierModel = new PanierModel($app);
-        $produit_id=$app->escape($req->get('produit_id'));
-        $client_id=$app['session']->get('user_id');
-        $this->panierModel->delete($produit_id);
-        return $app->redirect($app["url_generator"]->generate("Panier.index"));
+        $produit_id=$app->escape($req->get('id'));
+        $client_id=$app['session']->get('id_user');
+        $this->panierModel->deleteArticle($produit_id,$client_id);
+        return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
 
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers

@@ -12,10 +12,12 @@ class UserModel {
 	}
 
 	public function verif_login_mdp_Utilisateur($login,$mdp){
-		$sql = "SELECT login,password,droit FROM users WHERE login = ? AND password = ?";
+		$sql = "SELECT login,password,droit,id FROM users WHERE login = ? AND password = ?";
 		$res=$this->db->executeQuery($sql,[$login,$mdp]);   //md5($mdp);
-		if($res->rowCount()==1)
+		if($res->rowCount()==1) {
+
 			return $res->fetch();
+		}
 		else
 			return false;
 	}
