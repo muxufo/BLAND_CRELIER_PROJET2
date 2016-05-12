@@ -49,9 +49,11 @@ class PanierModel {
         return $queryBuilder->execute();
     }
 
-    function inserLigne($produit_id,$user_id){
-
+    function inserLigne($quantite, $prix, $user_id, $produit_id){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->insert('paniers')
+            ->values(['$quantite' => ':quantite', '$prix' =>':prix', '$user_id' => ':idUser', 'produit_id' => ':idProduit'])
+            ->setParameter('quantite', $quantite)->setParameter('prix', $prix)->setParameter('idUser', $user_id)->setParameter('idProduit', $produit_id);
+        return $queryBuilder->execute();
     }
-
-
 }
