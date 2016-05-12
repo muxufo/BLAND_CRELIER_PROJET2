@@ -41,7 +41,7 @@ class PanierController implements ControllerProviderInterface
         $produit_id=$app->escape($req->get('produit_id'));
         $client_id=$app['session']->get['user_id'];
         if($this->panierModel->counNbProduitLigne($produit_id,$client_id)>0){
-            $this->panierModel->udpdateLigneAdd($produit_id,$client_id);
+            $this->panierModel->updateLigneAdd($produit_id,$client_id);
         }else
             $this->panierModel->inserLigne($produit_id,$client_id);
         return $app->redirect($app["url_generator"]->generate("Panier.index"));
@@ -61,6 +61,10 @@ class PanierController implements ControllerProviderInterface
 
         $controllers->get('/', 'App\Controller\panierController::index')->bind('panier.index');
         $controllers->get('/show', 'App\Controller\panierController::show')->bind('panier.show');
+
+
+        $controllers->get('/', 'App\Controller\panierController::index')->bind('panier.index');
+        $controllers->get('/add', 'App\Controller\panierController::add')->bind('panier.add');
 
 
 

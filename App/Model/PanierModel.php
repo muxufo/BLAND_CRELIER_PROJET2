@@ -34,5 +34,13 @@ class PanierModel {
         return $queryBuilder ->execute()->fetchColumn(0);
     }
 
+    function updateLigneAdd($produit_id,$user_id){
+
+    }
+
+    function inserLigne($produit_id,$user_id){
+
+    }
+
 
 }
