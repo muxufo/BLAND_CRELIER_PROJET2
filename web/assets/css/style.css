@@ -44,3 +44,11 @@ footer {
    
 }
 
+table caption {
+    margin : 40px 0px;
+}
+
+table {
+    width : 100%;
+}
+

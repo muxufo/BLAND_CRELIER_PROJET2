@@ -21,9 +21,7 @@ class PanierController implements ControllerProviderInterface
     private $panierModel;
     private $typePanierModel;
 
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 
     public function index(Application $app) {
         return $this->show($app);
@@ -31,20 +29,24 @@ class PanierController implements ControllerProviderInterface
 
     public function show(Application $app) {
         $this->panierModel = new PanierModel($app);
-        $panier = $this->panierModel->getAllPanier();
+        $client_id=$app['session']->get('id_user');
+        $panier = $this->panierModel->getPanierUtilisateur($client_id);
         return $app["twig"]->render('FrontOffice/Panier/show.html.twig',['data'=>$panier]);
     }
 
     public function add(Application $app, Request $req){
         $this->produitModel = new ProduitModel($app);
         $this->panierModel = new PanierModel($app);
+        $quantite = $app->escape($req->get('quantite'));
+        $prix = $app->escape($req->get('prix'));
         $produit_id=$app->escape($req->get('id'));
         $client_id=$app['session']->get('id_user');
-        if($this->panierModel->countNbProduitLigne($produit_id,$client_id)>0){
-            $this->panierModel->updateLigneAdd($produit_id,$client_id);
-        }else
-            $this->panierModel->inserLigne($produit_id,$client_id);
-        return $app->redirect($app["url_generator"]->generate("Panier.index"));
+        if($this->panierModel->countNbProduitLigne($produit_id, $client_id)>0) {
+            $this->panierModel->updateLigneAdd($produit_id, $client_id);
+        } else {
+            $this->panierModel->inserLigne($quantite, $prix, $client_id, $produit_id);
+        }
+        return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
 
     public function delete(Application $app, Request $req){
