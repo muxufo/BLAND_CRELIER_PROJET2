@@ -15,7 +15,7 @@ class PanierModel {
     public function getPanierUtilisateur($user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->select('pa.produit_id, pa.id,pr.nom, pa.quantite, pa.prix, pa.dateAjoutPanier')
-                     ->from('paniers pa', ',produits pr' )
+                     ->from('paniers pa', ',produits pr')
                      ->where('pr.id=produit_id')
                      ->andWhere('user_id = :user_id')
                      ->orderBy('pr.nom', 'ASC')
@@ -25,7 +25,7 @@ class PanierModel {
 
 
 
-    function countNbProduitLigne($produit_id, $user_id){
+    function countNbProduitLigne($produit_id, $user_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->select('count(id)')
                      ->from('paniers')
@@ -37,7 +37,7 @@ class PanierModel {
         return $queryBuilder ->execute()->fetchColumn(0);
     }
 
-    function updateLigneAdd($quantite, $prix, $user_id, $produit_id){
+    function updateLigneAdd($quantite, $prix, $user_id, $produit_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->update('paniers')
                      ->set('quantite', 'quantite + :quantite')
@@ -53,13 +53,13 @@ class PanierModel {
         $queryBuilder->delete('paniers')
                      ->where('id = :produit_id')
                      ->andWhere('user_id = :user_id')
-                     ->setParameter('produit_id',$produit_id)
-                     ->setParameter('user_id',$user_id);
+                     ->setParameter('produit_id', $produit_id)
+                     ->setParameter('user_id', $user_id);
         return $queryBuilder->execute();
 
     }
 
-    function inserLigne($quantite, $prix, $user_id, $produit_id){
+    function inserLigne($quantite, $prix, $user_id, $produit_id) {
         print_r($prix);
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('paniers')

@@ -10,7 +10,13 @@
 			<thead>
 
 
-			<tr ><th>nom</th><th>id</th><th>type</th><th>prix</th><th>nom photo</th><th>photo</th>
+			<tr >
+				<th>nom</th>
+				<th>id</th>
+				<th>type</th>
+				<th>prix</th>
+				<th>nom photo</th>
+				<th>photo</th>
 				{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITclient' %}
 					<th>quantité</th>
 					<th colspan="2">opérations</th>
@@ -24,9 +30,13 @@
 			{% for produit in data if data is not empty %}
 
 				<tr>
-					<td>{{produit.nom}}</td><td>{{produit.id}}</td><td>{{produit.libelle}}</td><td>{{produit.prix}}</td><td>
-						{{produit.photo}}</td><td>
-						<img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.libelle}}" ></td>
+					<td>{{produit.nom}}</td>
+					<td>{{produit.id}}</td>
+					<td>{{produit.libelle}}</td>
+					<td>{{produit.prix}}</td>
+					<td>
+						{{produit.photo}}</td>
+					<td><img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.libelle}}" ></td>
 						{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITadmin' %}
 							<td><a href="{{ path('produit.delete', {id: produit.id}) }}">supprimer</a></td>
 						{% endif %}
@@ -34,15 +44,10 @@
 					{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITclient' %}
 					<td><input type="number" name="quantite" value="1" style="width: 70px"></td>
 					<td><a href="{{ path('panier.add',{prix: produit.prix,id: produit.id, quantite: quantite }) }}">Ajouter au panier</a></td>
-						<td>
-
-					<a href="{{ path('panier.show') }}">Voir mon panier</a>
-					</td>
+					<td><a href="{{ path('panier.show') }}">Voir mon panier</a></td>
 					{% endif %}
 					{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITadmin' %}
-						<td>
-							<a href="{{ path('produit.edit', {id: produit.id}) }}">modifier</a>
-						</td>
+						<td><a href="{{ path('produit.edit', {id: produit.id}) }}">modifier</a></td>
 					{% endif %}
 
 				</tr>
