@@ -41,6 +41,7 @@ class PanierController implements ControllerProviderInterface
         $prix = $app->escape($req->get('prix'));
         $produit_id=$app->escape($req->get('id'));
         $client_id=$app['session']->get('id_user');
+        print_r($prix);
         if($this->panierModel->countNbProduitLigne($produit_id, $client_id)>0) {
             $this->panierModel->updateLigneAdd($quantite, $prix,$client_id, $produit_id);
         } else {

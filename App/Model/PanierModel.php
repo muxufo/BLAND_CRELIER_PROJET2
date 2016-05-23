@@ -60,6 +60,7 @@ class PanierModel {
     }
 
     function inserLigne($quantite, $prix, $user_id, $produit_id){
+        print_r($prix);
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('paniers')
                      ->values(['quantite' => ':quantite', 'prix' =>':prix', 'user_id' => ':idUser', 'produit_id' => ':idProduit'])
