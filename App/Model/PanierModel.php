@@ -14,7 +14,7 @@ class PanierModel {
 
     public function getPanierUtilisateur($user_id) {
         $queryBuilder = new QueryBuilder($this->db);
-        $queryBuilder->select('pa.produit_id,pa.id,pr.nom,pa.quantite,pa.prix,pa.dateAjoutPanier')
+        $queryBuilder->select('pa.produit_id, pa.id,pr.nom, pa.quantite, pa.prix, pa.dateAjoutPanier')
                      ->from('paniers pa', ',produits pr' )
                      ->where('pr.id=produit_id')
                      ->andWhere('user_id = :user_id')
