@@ -12,4 +12,8 @@ class CommandeModel {
     {
         $this->db = $app['db'];
     }
+
+    /*public function add(Application $app, Request req) {
+        $this->CommandeModel = new CommandeModel($app);
+    }*/
 }
