@@ -37,15 +37,18 @@ class PanierController implements ControllerProviderInterface
     public function add(Application $app, Request $req){
         $this->produitModel = new ProduitModel($app);
         $this->panierModel = new PanierModel($app);
-        $quantite = $app->escape($req->get('quantite'));
         $prix = $app->escape($req->get('prix'));
         $produit_id=$app->escape($req->get('id'));
         $client_id=$app['session']->get('id_user');
 
         if($this->panierModel->countNbProduitLigne($produit_id, $client_id)>0) {
-            $this->panierModel->updateLigneAdd($quantite, $prix,$client_id, $produit_id);
+
+            $this->panierModel->updateLigneAdd($prix,$client_id, $produit_id);
+
         } else {
-            $this->panierModel->inserLigne($quantite, $prix, $client_id, $produit_id);
+
+            $this->panierModel->inserLigne($prix, $client_id, $produit_id);
+
         }
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }

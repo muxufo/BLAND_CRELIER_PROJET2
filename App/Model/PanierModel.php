@@ -29,22 +29,21 @@ class PanierModel {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->select('count(id)')
                      ->from('paniers')
-                     ->where('id = :produit_id')
-                     ->andWhere('user_id = :user_id')
-                     ->andWhere('commande_id is Null')
+                     ->Where('user_id = :user_id')
+                     ->andWhere('produit_id = :produit_id')
                      ->setParameter('produit_id', $produit_id)
                      ->setParameter('user_id', $user_id);
         return $queryBuilder ->execute()->fetchColumn(0);
     }
 
-    function updateLigneAdd($quantite, $prix, $user_id, $produit_id) {
+    function updateLigneAdd($prix, $user_id, $produit_id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->update('paniers')
-                     ->set('quantite', 'quantite + :quantite')
-                     ->set('prix', 'prix + :prix * :quantite')
+                     ->set('quantite', 'quantite + 1')
+                     ->set('prix', 'prix + :prix')
                      ->set('dateAjoutPanier', 'CURRENT_TIMESTAMP')
                      ->where('produit_id = :idProduit')
-                     ->setParameter('quantite', $quantite)->setParameter('prix', $prix)->setParameter('idUser', $user_id)->setParameter('idProduit', $produit_id);
+                     ->setParameter('prix', $prix)->setParameter('idUser', $user_id)->setParameter('idProduit', $produit_id);
         $queryBuilder->execute();
     }
 
@@ -59,12 +58,12 @@ class PanierModel {
 
     }
 
-    function inserLigne($quantite, $prix, $user_id, $produit_id) {
+    function inserLigne($prix, $user_id, $produit_id) {
         print_r($prix);
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('paniers')
-                     ->values(['quantite' => ':quantite', 'prix' =>':prix', 'user_id' => ':idUser', 'produit_id' => ':idProduit'])
-                     ->setParameter('quantite', $quantite)->setParameter('prix', $prix)->setParameter('idUser', $user_id)->setParameter('idProduit', $produit_id);
+                     ->values(['quantite' => '1', 'prix' =>':prix', 'user_id' => ':idUser', 'produit_id' => ':idProduit'])
+                     ->setParameter('prix', $prix)->setParameter('idUser', $user_id)->setParameter('idProduit', $produit_id);
         return $queryBuilder->execute();
     }
 }
