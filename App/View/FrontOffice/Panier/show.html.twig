@@ -28,8 +28,7 @@
                         </a>
                     </td>
                 </tr>
-
-                    <input type="submit" name="seConnecter" value="Valider le panier" />
+                    <button ><a href="{{ path('panier.valide', {id :panier.id},{prix :panier.prix},{date_achat :panier.dateAjoutPanier}) }}" type="button">Valider le panier</a></button>
                 {% endif %}
             {% endfor %}
 

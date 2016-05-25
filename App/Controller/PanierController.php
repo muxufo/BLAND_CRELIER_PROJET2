@@ -62,11 +62,26 @@ class PanierController implements ControllerProviderInterface
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
 
+    public function valide(Application $app, Request $req){
+        $this->produitModel = new ProduitModel($app);
+        $this->panierModel = new PanierModel($app);
+        $prix = $app->escape($req->get('prix'));
+        $user_id=$app['session']->get('id_user');
+        $date_achat = $app->escape($req->get('date_achat'));
+        $this->panierModel->validePanier($user_id,$prix,$date_achat);
+
+        return $app->redirect($app["url_generator"]->generate("panier.index"));
+    }
+
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
 
         $controllers->get('/', 'App\Controller\panierController::index')->bind('panier.index');
         $controllers->get('/show', 'App\Controller\panierController::show')->bind('panier.show');
+
+
+        $controllers->get('/', 'App\Controller\panierController::index')->bind('panier.index');
+        $controllers->get('/valide', 'App\Controller\panierController::valide')->bind('panier.valide');
 
 
         $controllers->get('/', 'App\Controller\panierController::index')->bind('panier.index');

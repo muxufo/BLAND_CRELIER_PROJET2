@@ -58,8 +58,24 @@ class PanierModel {
 
     }
 
+    function deleteAllArticle($user_id){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->delete('paniers')
+            ->where('user_id = :user_id')
+            ->setParameter('user_id', $user_id);
+        return $queryBuilder->execute();
+    }
+
+    function validePanier($user_id, $prix, $date_achat){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->insert('commandes')
+            ->values(['prix' =>':prix', 'user_id' => ':idUser', 'date_achat' => ':date_achat', 'etat_id' => '1'])
+            ->setParameter('prix', $prix)->setParameter('idUser', $user_id)->setParameter('date_achat', $date_achat);
+        return $queryBuilder->execute();
+    }
+
     function inserLigne($prix, $user_id, $produit_id) {
-        print_r($prix);
+
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('paniers')
                      ->values(['quantite' => '1', 'prix' =>':prix', 'user_id' => ':idUser', 'produit_id' => ':idProduit'])
