@@ -69,7 +69,7 @@ class PanierController implements ControllerProviderInterface
         $user_id=$app['session']->get('id_user');
         $date_achat = $app->escape($req->get('date_achat'));
         $this->panierModel->validePanier($user_id,$prix,$date_achat);
-
+//  pas fini
         return $app->redirect($app["url_generator"]->generate("panier.index"));
     }
 
