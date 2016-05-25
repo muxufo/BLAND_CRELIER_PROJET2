@@ -33,4 +33,27 @@ class CommandeModel{
         $requestSQL->execute([$lastinsertid,$user_id]);
         $conn->commit();
     }
+
+    public function getAllCommandes() {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->select('c.id', 'u.user_id', 'c.prix', 'c.date_achat', 'e.etat_id')
+            ->from('commandes', 'c')
+            ->innerJoin('c', 'users', 'u', 'c.user_id=u.user_id')
+            ->innerJoin('c', 'etats', 'e', 'c.etat_id=e.id')
+            ->addOrderBy('p.nom', 'ASC');
+        return $queryBuilder->execute()->fetchAll();
+    }
+
+    public function getCommandeClient($user_id) {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->select('c.id', 'u.user_id', 'c.prix', 'c.date_achat', 'e.etat_id')
+            ->from('commandes', 'c')
+            ->innerJoin('c', 'users', 'u', 'c.user_id=u.user_id')
+            ->innerJoin('c', 'etats', 'e', 'c.etat_id=e.id')
+            ->where('user_id = :user_id')
+            ->addOrderBy('p.nom', 'ASC')
+            ->setParameter('user_id', $user_id);
+        return $queryBuilder->execute()->fetchAll();
+    }
 }
