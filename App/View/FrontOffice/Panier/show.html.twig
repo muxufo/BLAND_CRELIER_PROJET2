@@ -24,7 +24,7 @@
                 {% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITclient' %}
                     <td>
                         <a href="{{path('panier.delete', {id: panier.id})}}">
-                            <img src="BASE_URL/images/supprimer.jpg" />supprimer
+                            <img src="{{asset('images/')}}supprimer.jpg" />
                         </a>
                     </td>
                 </tr>
@@ -33,6 +33,7 @@
             {% endfor %}
 
             </tbody>
+
         </table>
     </div>
 {% endblock %}
