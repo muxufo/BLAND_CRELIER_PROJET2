@@ -10,17 +10,14 @@
 			<thead>
 
 
-			<tr >
+			<tr>
 				<th>nom</th>
 				<th>id</th>
 				<th>type</th>
 				<th>prix</th>
 				<th>nom photo</th>
 				<th>photo</th>
-				{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITclient' %}
-					<th>quantité</th>
-					<th colspan="2">opérations</th>
-				{% endif %}
+
 				{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITadmin' %}
 					<th>opération</th>
 				{% endif %}
@@ -42,7 +39,7 @@
 						{% endif %}
 
 					{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITclient' %}
-					<td><input type="number" name="quantite" value="1" style="width: 70px"></td>
+
 					<td><a href="{{ path('panier.add',{prix: produit.prix,id: produit.id}) }}">Ajouter au panier</a></td>
 					<td><a href="{{ path('panier.show') }}">Voir mon panier</a></td>
 					{% endif %}

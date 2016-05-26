@@ -69,7 +69,7 @@ class PanierModel {
     function validePanier($user_id, $prix, $date_achat){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder->insert('commandes')
-            ->values(['prix' =>':prix', 'user_id' => ':idUser', 'date_achat' => ':date_achat', 'etat_id' => '1'])
+            ->values(['prix' =>':prix', 'user_id' => ':idUser', 'date_achat' => 'CURRENT_TIMESTAMP', 'etat_id' => '1'])
             ->setParameter('prix', $prix)->setParameter('idUser', $user_id)->setParameter('date_achat', $date_achat);
         return $queryBuilder->execute();
     }

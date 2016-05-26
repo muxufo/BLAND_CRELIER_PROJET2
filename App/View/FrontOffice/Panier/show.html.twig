@@ -28,7 +28,7 @@
                         </a>
                     </td>
                 </tr>
-                    <button ><a href="{{ path('panier.valide', {id :panier.id},{prix :panier.prix},{date_achat :panier.dateAjoutPanier}) }}" type="button">Valider le panier</a></button>
+                    <button ><a href="{{ path('panier.valide', {prix :panier.prix}) }}" type="button">Valider le panier</a></button>
                 {% endif %}
             {% endfor %}
 

@@ -42,6 +42,11 @@ class UserController implements ControllerProviderInterface {
 			return $app["twig"]->render('v_session_connexion.html.twig');
 		}
 	}
+
+	public function validFormModif(){
+
+	}
+
 	public function deconnexionSession(Application $app)
 	{
 		$app['session']->clear();
